@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyldsc"
+version = "0.1.0"
+description = "Modern-Python reimplementation of LDSC (LD Score Regression) -- SNP-heritability, genetic correlation, partitioned/stratified h2 and LDSC-SEG cell-type enrichment."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Zehua Zeng", email = "starlitnightly@163.com" },
+]
+keywords = [
+    "LDSC", "LD-score-regression", "heritability", "genetic-correlation",
+    "GWAS", "partitioned-heritability", "stratified-LDSC", "LDSC-SEG",
+    "cell-type-enrichment", "block-jackknife", "summary-statistics",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.10",
+    "pandas>=1.5",
+    "bitarray>=2.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-cov", "ruff"]
+notebook = ["matplotlib>=3.6", "jupyter", "nbconvert"]
+
+[project.scripts]
+pyldsc = "pyldsc.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/omicverse/py-ldsc"
+Repository = "https://github.com/omicverse/py-ldsc"
+Issues = "https://github.com/omicverse/py-ldsc/issues"
+"Upstream ldsc" = "https://github.com/bulik/ldsc"
+"Upstream (omicverse)" = "https://github.com/Starlitnightly/omicverse"
+
+[tool.setuptools.packages.find]
+include = ["pyldsc*"]
+exclude = ["tests*", "examples*", "ldsc-ref*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::FutureWarning",
+    "ignore::RuntimeWarning",
+]

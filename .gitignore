@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+.pytest_cache/
+.ruff_cache/
+*.log
+examples/*.png
+examples/*.sumstats.gz
+examples/*.l2.*
+*.cell_type_results.txt
+*.results
